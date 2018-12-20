@@ -64,7 +64,7 @@ int BST::size(Node* cur_root)
         }
         else
         {
-                return size(cur_root->m_left) + size(cur_root->m_right) + 1;
+                return 1 + size(cur_root->m_left) + size(cur_root->m_right);
         }
 }
 
@@ -198,7 +198,9 @@ int BST::balanced(Node *cur_root)
         }
         else //returns largest of children's subtree plus one (plus one is because cur_node also needs to be counted in height)
         {
+                if (abs(balanced(cur_root->m_left) - balanced(cur_root->m_right)) <= 1 && balanced(cur_root->m_left) != -1 /*left subtree is balanced*/&& balanced(cur_root->m_right) != -1 /*right subtree is balanced*/)
                 return (max(balanced(cur_root->m_left), balanced(cur_root->m_right)) + 1); //compares which tree has highest height value
+                return -1;
         }
 }
 
