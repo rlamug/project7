@@ -25,7 +25,6 @@ int main()
         {
                 if (command != "echo" && command != "insert" && command != "size" && command != "find" && command != "print" && command != "breadth" && command != "distance" && command != "balanced" && command != "rebalance") //prints error message if illegal command is used
                 {
-                        cin >> ws;
                         getline(cin, str);
                         cerr << "Illegal command <" << command << ">." << endl;
                 }
@@ -39,7 +38,7 @@ int main()
                 {
                         cin >> ws;
                         getline(cin, str);
-                        if (function.insert(str) == false) //error message
+                        if (!function.insert(str)) //error message
                         {
                                 cerr << "insert <" << str << "> failed. String already in tree." << endl;
                         }
@@ -52,11 +51,11 @@ int main()
                 {
                         cin >> ws;
                         getline(cin, str);
-                        if (function.find(str) == true)
+                        if (function.find(str)) //string is in tree
                         {
                                 cout << "<" << str << ">" << " is in tree." << endl;
                         }
-                        else
+                        else // string couldn't be found
                         {
                                 cout << "<" << str << ">" << " is not in tree." << endl;
                         }
@@ -79,11 +78,11 @@ int main()
                 }
                 else if (command == "balanced") //balanced command
                 {
-                        if (function.balanced() > -1)
+                        if (function.balanced() > -1) //tree is balanced
                         {
                                 cout << "Tree is balanced." << endl;
                         }
-                        else
+                        else //(function.balanced() == -1 or possibly <) tree isn't balanced
                         {
                                 cout << "Tree is not balanced." << endl;
                         }
