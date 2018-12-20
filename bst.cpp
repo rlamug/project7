@@ -64,7 +64,7 @@ int BST::size(Node* cur_root)
         }
         else
         {
-                return (size(cur_root->m_left) + size(cur_root->m_right) + 1);
+                return size(cur_root->m_left) + size(cur_root->m_right) + 1;
         }
 }
 
@@ -198,14 +198,14 @@ int BST::balanced(Node *cur_root)
         }
         else //returns largest of children's subtree plus one (plus one is because cur_node also needs to be counted in height)
         {
-                return max(balanced(cur_root->m_left), balanced(cur_root->m_right)) + 1; //compares which tree has highest height value
+                return (max(balanced(cur_root->m_left), balanced(cur_root->m_right)) + 1); //compares which tree has highest height value
         }
 }
 
 //Max Function: Compares two numbers and returns the one with the greatest value
 int BST::max(int a, int b)
 {
-        return a>b ? a:b;
+        return a>=b ? a:b;
 }
 
 /*void BST::insert_from_vector(vector <string> &elements,
