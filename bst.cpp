@@ -31,19 +31,21 @@ bool BST::insert(string str, Node* & cur_root)
                 cur_root = new Node(str);
                 return  true;
         }
-        else if (str < cur_root->m_string) //inserts to left
-        {
-                insert(str, cur_root->m_left);
-                return true;
-        }
-        else if (str > cur_root->m_string) //inserts to right
-        {
-                return insert(str, cur_root-> m_right);
-                return true;
-        }
-        else //(str == cur_root->m_string) string is already in tree
+        else if (str == cur_root->m_string) //string is already in tree
         {
                 return false;
+        }
+        else
+        {
+                if (str < cur_root->m_string) //inserts to left
+                {
+                        return insert(str, cur_root->m_left);
+                }
+                if (str > cur_root->m_string) //inserts to right
+                {
+                        return insert(str, cur_root-> m_right);
+                }
+                return true;
         }
 }
 
